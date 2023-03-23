@@ -1,0 +1,58 @@
+{
+    "manifest_version": 3,
+    "name": "WebExtension starter",
+    "version": "1.0.0",
+    "icons": {
+      "16": "src/assets/icons/favicon-16.png",
+      "32": "src/assets/icons/favicon-32.png",
+      "48": "src/assets/icons/favicon-48.png",
+      "128": "src/assets/icons/favicon-128.png"
+    },
+    "description": "WebExtension starter",
+    "homepage_url": "https://github.com/smoqadam/web-extension-starter",
+    "short_name": "Sample Name",
+    "host_permissions": [
+      "http://*/*",
+      "https://*/*"
+    ],
+    "permissions": [
+      "activeTab",
+      "storage",
+      "contextMenus"
+    ],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'"
+    },
+    "author": "Saeed Moghadamzadeh",
+    "minimum_chrome_version": "88",
+    "action": {
+      "default_popup": "src/popup.html",
+      "default_icon": {
+        "16": "src/assets/icons/favicon-16.png",
+        "32": "src/assets/icons/favicon-32.png",
+        "48": "src/assets/icons/favicon-48.png",
+        "128": "src/assets/icons/favicon-128.png"
+      },
+      "default_title": "tiny title"
+    },
+    "options_page": "src/options.html",
+    "options_ui": {
+      "page": "src/options.html",
+      "open_in_tab": true
+    },
+    "background": {
+      "service_worker": "src/scripts/serviceWorker.bundle.js",
+      "type": "module"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "http://*/*",
+          "https://*/*"
+        ],
+        "js": [
+          "src/scripts/contentScript.bundle.js"
+        ]
+      }
+    ]
+  }
