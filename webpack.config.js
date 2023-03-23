@@ -9,7 +9,7 @@ module.exports = {
         popup: './src/scripts/popup.js'
     },
     output: {
-        filename: 'src/scripts/[name].bundle.js',
+        filename: 'src/js/[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true
     },
@@ -17,7 +17,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/options.html',
             inject: 'body',
-            hash: true,
             minify: false,
             chunks: ['options'],
             filename: 'src/options.html',
@@ -26,7 +25,6 @@ module.exports = {
             template: 'src/popup.html',
             inject: 'body',
             minify: false,
-            hash: true,
             chunks: ['popup'],
             filename: 'src/popup.html',
         }),
@@ -36,5 +34,26 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [{ from: 'manifest.json', to: 'manifest.json' }],
         }),
-    ]
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.html$/i,
+                // exclude: /node_modules/,
+                loader: "html-loader",
+            },
+            {
+                test: /.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                  loader: 'babel-loader',
+                  options: {
+                    presets: [
+                      ['@babel/preset-env', { targets: "defaults" }]
+                    ]
+                  }
+                }
+              }
+        ],
+    }
 };

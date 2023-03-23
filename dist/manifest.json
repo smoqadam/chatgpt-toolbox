@@ -41,7 +41,7 @@
       "open_in_tab": true
     },
     "background": {
-      "service_worker": "src/scripts/serviceWorker.bundle.js",
+      "service_worker": "src/js/serviceWorker.bundle.js",
       "type": "module"
     },
     "content_scripts": [
@@ -51,7 +51,7 @@
           "https://*/*"
         ],
         "js": [
-          "src/scripts/contentScript.bundle.js"
+          "src/js/contentScript.bundle.js"
         ]
       }
     ]
