@@ -3,10 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+    watch: true,
     entry: {
         serviceWorker: './src/scripts/serviceWorker.js',
         contentScript: './src/scripts/contentScript.js',
-        popup: './src/scripts/popup.js'
+        popup: './src/scripts/popup.js',
+        options: './src/scripts/options.js'
     },
     output: {
         filename: 'src/js/[name].bundle.js',
@@ -32,6 +34,9 @@ module.exports = {
             patterns: [{ from: 'src/assets', to: 'src/assets' }],
         }),
         new CopyWebpackPlugin({
+            patterns: [{ from: 'src/css/popup.css', to: 'src/css/popup.css' }],
+        }),
+        new CopyWebpackPlugin({
             patterns: [{ from: 'manifest.json', to: 'manifest.json' }],
         }),
     ],
@@ -53,7 +58,11 @@ module.exports = {
                     ]
                   }
                 }
-              }
+              },
+              {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+              },
         ],
     }
 };
