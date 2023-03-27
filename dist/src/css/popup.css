@@ -21,25 +21,21 @@
 
 #chatgpt-toolbox__title {
     font-size: 20px !important;
-    width: 100% !important;
-    float: left;
+    display: flex;
     padding: 10px;
 }
 
 #chatgpt-toolbox__title h3{
     display: flex !important;
     font-size: 20px !important;
-    text-align: center !important;
-    width: 90% !important;
-    float: left;
+    flex: 4;
 }
 
 #chatgpt-toolbox__close {
-    display: flex;
     cursor: pointer;
     width: 10%;
-    padding: 4px;
-    float: right;
+    flex: 1;
+    text-align: right;
 }
 
 #chatgpt-toolbox__prompt {
@@ -60,4 +56,20 @@
     padding: 10px;
     display: flex;
     font-size: 16px;
+    height: 48%;
+    max-height: 48%;
+    border-bottom: 1px solid;
+}
+
+#chatgpt-toolbox__footer {
+
+}
+
+
+#chatgpt-toolbox__option {
+    width: 24px;
+    height: 25px;
+    background: #f00;
+    display: flex;
+    justify-content: center;
 }

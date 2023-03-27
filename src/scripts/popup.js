@@ -1,15 +1,8 @@
 export default class Popup {
     constructor() {
         this.el = document.querySelector('#chatgpt-toolbox__container');
-        this.el.querySelector('#chatgpt-toolbox__close').addEventListener('click', (e) => {
-            console.log('CLOSE CLICKED');
-            this.hide();
-        });
-
-        this.el.querySelector('#chatgpt-toolbox__option').addEventListener('click', (e) => {
-            console.log('option CLICKED');
-            chrome.runtime.sendMessage({type: "openOption"});
-        })
+        this.registerCloseEvent();
+        this.registerOptionEvent();
     }
 
     show(){
@@ -20,10 +13,31 @@ export default class Popup {
         this.el.id = 'chatgpt-toolbox-hidden';
     }
 
-    close() {
+    registerCloseEvent() {
         document.querySelector('#chatgpt-toolbox__close').addEventListener('click', (e) => {
             console.log('CLOSE CLICKED');
             this.hide();
         })
+    }
+
+    registerOptionEvent() {
+        document.querySelector('#chatgpt-toolbox__option').addEventListener('click', (e) => {
+            console.log('option CLICKED');
+            chrome.runtime.sendMessage({type: "openOption"});
+        })
+    }
+
+    setPrompt(prompt) {
+        document.querySelector('#chatgpt-toolbox__prompt').textContent = prompt;
+    }
+
+    setResponse(res) {
+        document.querySelector('#chatgpt-toolbox__response').textContent = res;
+    }
+
+    loading(b) {
+        if (b) {
+            document.querySelector('#chatgpt-toolbox__response').textContent = "ChatGPT: Please wait...";
+        }
     }
 }

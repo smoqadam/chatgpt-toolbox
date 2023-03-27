@@ -16,7 +16,7 @@ prompts.forEach((p) => {
     });
 })
 chrome.runtime.onMessage.addListener((req) => {
-    console.log({req});
+    console.log({ req });
     if (req.type == "openOption") {
         chrome.tabs.create({ 'url': 'chrome://extensions/?options=' + chrome.runtime.id });
     }
@@ -25,32 +25,43 @@ chrome.contextMenus.onClicked.addListener(async function (info, tab) {
     let promptObj = getPrompt(info.menuItemId);
     let prompt = promptObj.prompt.replace("{{TEXT}}", info.selectionText)
 
-
-    let api_key = await chrome.storage.local.get("api_key");
-    let response = await OpenaiFetchAPI(prompt, api_key.api_key);
-
-    console.log({response});
-
     chrome.tabs.query(
         {
             active: true,
             currentWindow: true
         },
-        function (tabs) {
-            chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-                chrome.tabs.sendMessage(tabs[0].id, {
-                    msg: 'response',
-                    data: {
-                        prompt: prompt,
-                        response: response.choices[0].text
-                    }
-                });
-                console.log(
-                    "message sent"
-                );
-            });
+        async function (tabs) {
+            await chrome.tabs.sendMessage(tabs[0].id, { msg: 'clicked', data: {prompt: prompt} });
         }
     );
+
+
+
+    let api_key = await chrome.storage.local.get("api_key");
+    let response = await OpenaiFetchAPI(prompt, api_key.api_key);
+
+    console.log({ response });
+
+    // chrome.tabs.query(
+    //     {
+    //         active: true,
+    //         currentWindow: true
+    //     },
+    //     function (tabs) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {
+            msg: 'response',
+            data: {
+                prompt: prompt,
+                response: response.choices[0].text
+            }
+        });
+        console.log(
+            "message sent"
+        );
+    });
+    // }
+    // );
 });
 
 
@@ -86,10 +97,10 @@ function OpenaiFetchAPI(prompt, token) {
 
 
     }).then(response => {
-        
+
         return response.json()
-       
+
     })
-    
+
 
 }
