@@ -4,7 +4,7 @@
     position: fixed !important;
     top: 10px !important;
     right: 20px !important;
-    background-color: rgb(48 48 48) !important;
+    background-color: #444654 !important;
     z-index: 9999 !important;
     color: aliceblue !important;
     border-radius: 5px !important;
@@ -19,57 +19,80 @@
     display: inline-block !important;
 }
 
-#chatgpt-toolbox__title {
-    font-size: 20px !important;
-    display: flex;
-    padding: 10px;
+#chatgpt-toolbox__header{
+    display: flex !important;
+    padding: 10px !important;
+    text-align: center !important;
+  color: #aaa !important;
 }
 
-#chatgpt-toolbox__title h3{
+#chatgpt-toolbox__header h3{
     display: flex !important;
     font-size: 20px !important;
-    flex: 4;
+    flex: 4 !important;
+  margin: 0 !important;
+  
 }
 
 #chatgpt-toolbox__close {
-    cursor: pointer;
-    width: 10%;
-    flex: 1;
-    text-align: right;
+    cursor: pointer !important;
+    font-size: 20px !important;
+    flex: 1 !important;
+    text-align: right !important;
 }
-
+#chatgpt-toolbox__close:hover {
+    color: #999;
+}
 #chatgpt-toolbox__prompt {
     font-size: 15px !important;
-    margin: 5px !important;
-    padding: 6px !important;
+    padding: 10px !important;
     display: flex;
+    flex-direction: column;
     max-height: 260px;
     overflow-y: auto;
-    /* background: #595959; */
+    background: #343541;
     max-height: 240px;
-    /* color: #000; */
-    border-bottom: 1px solid #eee;
     height: 240px;
+    overflow-y: auto;
 }
 
 #chatgpt-toolbox__response {
     padding: 10px;
     display: flex;
+    flex-direction: column;
     font-size: 16px;
     height: 48%;
     max-height: 48%;
-    border-bottom: 1px solid;
+    overflow-y: auto;
 }
-
+#chatgpt-toolbox__title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 #chatgpt-toolbox__footer {
-
+  background-color: #343541;
+/*   padding: 16px; */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 
 #chatgpt-toolbox__option {
     width: 24px;
     height: 25px;
-    background: #f00;
+    cursor: pointer;
     display: flex;
     justify-content: center;
+}
+#chatgpt-toolbox__option:hover {
+  background: #444654;
+}
+
+#chatgpt-toolbox__option-settings {
+  font-size: 25px;
+  line-height:1.4;
+  width: 24px;
+  height: 25px;
+  text-align: center;
 }

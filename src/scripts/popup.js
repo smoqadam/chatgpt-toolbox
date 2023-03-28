@@ -21,23 +21,23 @@ export default class Popup {
     }
 
     registerOptionEvent() {
-        document.querySelector('#chatgpt-toolbox__option').addEventListener('click', (e) => {
+        document.querySelector('#chatgpt-toolbox__option-settings').addEventListener('click', (e) => {
             console.log('option CLICKED');
             chrome.runtime.sendMessage({type: "openOption"});
         })
     }
 
     setPrompt(prompt) {
-        document.querySelector('#chatgpt-toolbox__prompt').textContent = prompt;
+        document.querySelector('#chatgpt-toolbox__prompt-content').textContent = prompt;
     }
 
     setResponse(res) {
-        document.querySelector('#chatgpt-toolbox__response').textContent = res;
+        document.querySelector('#chatgpt-toolbox__response-content').textContent = res;
     }
 
     loading(b) {
         if (b) {
-            document.querySelector('#chatgpt-toolbox__response').textContent = "ChatGPT: Please wait...";
+            document.querySelector('#chatgpt-toolbox__response-content').textContent = "Please wait...";
         }
     }
 }

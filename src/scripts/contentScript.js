@@ -15,17 +15,17 @@ document.querySelector('body').appendChild(doc.firstChild);
 
 
 let popupObj = new Popup();
-popupObj.hide();
+// popupObj.hide();
 
 chrome.runtime.onMessage.addListener(function (req) {
     console.log({ req });
     if (req.msg == 'clicked') {
-        popupObj.setPrompt("Prompt: "+req.data.prompt);
+        popupObj.setPrompt(req.data.prompt);
         popupObj.show();
         popupObj.loading(true);
     } else if (req.msg == 'response') {
         console.log(req.data);
-        popupObj.setResponse("ChatGPT: "+req.data.response);
+        popupObj.setResponse(req.data.response);
         popupObj.loading(false);     
     }
 });
