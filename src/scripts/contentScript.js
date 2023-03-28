@@ -1,5 +1,4 @@
 import popup from './popup.html';
-import { prompts } from './prompts';
 import Popup from './popup';
 
 
@@ -15,7 +14,7 @@ document.querySelector('body').appendChild(doc.firstChild);
 
 
 let popupObj = new Popup();
-// popupObj.hide();
+popupObj.hide();
 
 chrome.runtime.onMessage.addListener(function (req) {
     console.log({ req });
