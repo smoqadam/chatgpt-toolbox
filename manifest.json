@@ -58,7 +58,7 @@
     }
   ],
   "web_accessible_resources": [{
-    "resources":["src/css/popup.css"],
+    "resources":["src/css/popup.css", "src/assets/icons/setting.png"],
     "matches": [
       "http://*/*",
       "https://*/*"

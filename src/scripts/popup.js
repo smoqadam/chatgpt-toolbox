@@ -4,6 +4,7 @@ import { marked } from 'marked';
 export default class Popup {
     constructor() {
         this.el = document.querySelector('#chatgpt-toolbox__container');
+        // this.el.querySelector("#chatgpt-toolbox__option-settings").style.backgroundImage = "url(chrome-extension://"+chrome.runtime.id+"/src/assets/icons/setting.png)";
         this.registerCloseEvent();
         this.registerOptionEvent();
     }

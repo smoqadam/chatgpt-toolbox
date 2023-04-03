@@ -18,7 +18,8 @@ prompts.forEach((p) => {
 chrome.runtime.onMessage.addListener((req) => {
     console.log({ req });
     if (req.type == "openOption") {
-        chrome.tabs.create({ 'url': 'chrome://extensions/?options=' + chrome.runtime.id });
+        // chrome-extension://ndfhmknnnlbdodjelgleieddbpdpcfbo/src/options.html
+        chrome.tabs.create({ 'url': 'chrome-extension://' + chrome.runtime.id + '/src/options.html' });
     }
 })
 chrome.contextMenus.onClicked.addListener(async function (info, tab) {
