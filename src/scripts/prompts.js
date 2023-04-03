@@ -5,6 +5,11 @@ export let prompts = [
     "prompt": "{{TEXT}}"
   },
   {
+    "label": "Summarize this page",
+    "id": "summarize",
+    "prompt": "summerize this: \"{{TEXT}}\". Your repsonse must not have the url and any additional text."
+  },
+  {
     "label": "Explain this",
     "id": "explain",
     "prompt": "Explaing this text: \"{{TEXT}}\""

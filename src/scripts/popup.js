@@ -4,7 +4,6 @@ import { marked } from 'marked';
 export default class Popup {
     constructor() {
         this.el = document.querySelector('#chatgpt-toolbox__container');
-        // this.el.querySelector("#chatgpt-toolbox__option-settings").style.backgroundImage = "url(chrome-extension://"+chrome.runtime.id+"/src/assets/icons/setting.png)";
         this.registerCloseEvent();
         this.registerOptionEvent();
     }
@@ -36,16 +35,6 @@ export default class Popup {
     }
 
     setResponse(res) {
-        // const regex = /<code>(.*?)<\/code>/gm;
-        // var result = regex.exec(res);
-        // res = res.replace(/<code>/g, )
-        // let html = marked.parse(res);
-        // let html = c.makeHtml(res);
-        // const codeContent = document.getElementById("code-content").textContent;
-        // const highlightedCode = Prism.highlight(html);
-    
-        // document.getElementById("code-content").innerHTML = highlightedCode;
-        // document.querySelector('#chatgpt-toolbox__response-content').replaceChild(doc.firstChild);
         document.querySelector('#chatgpt-toolbox__response-content').innerHTML = res;
     }
 

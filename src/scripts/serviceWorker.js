@@ -1,68 +1,57 @@
 import { prompts } from './prompts';
 
-console.log("hi from service worker");
 chrome.contextMenus.create({
     id: "parent",
     title: "ChatGPT",
-    contexts: ["selection"],  // ContextType
+    contexts: ["page","selection"],
 });
 
 prompts.forEach((p) => {
+    if (p.id === "summarize") {
+        chrome.contextMenus.create({
+            title: p.label,
+            id: p.id,
+            parentId: "parent",
+            contexts: ["page"]
+        });    
+        return;
+    }
     chrome.contextMenus.create({
         title: p.label,
         id: p.id,
         parentId: "parent",
         contexts: ["selection"]
     });
-})
+});
+
 chrome.runtime.onMessage.addListener((req) => {
-    console.log({ req });
     if (req.type == "openOption") {
-        // chrome-extension://ndfhmknnnlbdodjelgleieddbpdpcfbo/src/options.html
         chrome.tabs.create({ 'url': 'chrome-extension://' + chrome.runtime.id + '/src/options.html' });
     }
-})
+});
+
 chrome.contextMenus.onClicked.addListener(async function (info, tab) {
     let promptObj = getPrompt(info.menuItemId);
-    let prompt = promptObj.prompt.replace("{{TEXT}}", info.selectionText)
+    let prompt = null;
+    if (info.menuItemId === "summarize") {
+        prompt = promptObj.prompt.replace("{{TEXT}}", tab.url)
+    } else {
+        prompt = promptObj.prompt.replace("{{TEXT}}", info.selectionText)
+    }
 
-    chrome.tabs.query(
-        {
-            active: true,
-            currentWindow: true
-        },
-        async function (tabs) {
-            await chrome.tabs.sendMessage(tabs[0].id, { msg: 'clicked', data: {prompt: prompt} });
-        }
-    );
-
-
+    
+    await chrome.tabs.sendMessage(tab.id, { msg: 'clicked', data: { prompt: prompt } });
 
     let api_key = await chrome.storage.local.get("api_key");
     let response = await OpenaiFetchAPI(prompt, api_key.api_key);
 
-    console.log({ response });
-
-    // chrome.tabs.query(
-    //     {
-    //         active: true,
-    //         currentWindow: true
-    //     },
-    //     function (tabs) {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, {
-            msg: 'response',
-            data: {
-                prompt: prompt,
-                response: response.choices[0].text
-            }
-        });
-        console.log(
-            "message sent"
-        );
+    chrome.tabs.sendMessage(tab.id, {
+        msg: 'response',
+        data: {
+            prompt: prompt,
+            response: response.choices[0].text
+        }
     });
-    // }
-    // );
 });
 
 
@@ -80,7 +69,6 @@ const getPrompt = (id) => {
 
 
 function OpenaiFetchAPI(prompt, token) {
-    console.log("Calling GPT3")
     var url = "https://api.openai.com/v1/completions";
     var bearer = 'Bearer ' + token
     return fetch(url, {
@@ -95,13 +83,7 @@ function OpenaiFetchAPI(prompt, token) {
             "max_tokens": 3000,
             "temperature": 1,
         })
-
-
     }).then(response => {
-
         return response.json()
-
     })
-
-
 }
