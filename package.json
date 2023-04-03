@@ -20,5 +20,9 @@
     "style-loader": "^3.3.2",
     "webpack": "^5.76.3",
     "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "marked": "^4.3.0",
+    "showdown": "^2.1.0"
   }
 }
