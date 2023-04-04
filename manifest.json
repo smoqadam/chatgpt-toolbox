@@ -3,10 +3,10 @@
   "name": "ChatGPT Toolkit",
   "version": "0.0.1",
   "icons": {
-    "16": "src/assets/icons/favicon-16.png",
-    "32": "src/assets/icons/favicon-32.png",
-    "48": "src/assets/icons/favicon-48.png",
-    "128": "src/assets/icons/favicon-128.png"
+    "16": "src/assets/icons/ChatGPT-16.png",
+    "32": "src/assets/icons/ChatGPT-32.png",
+    "48": "src/assets/icons/ChatGPT-48.png",
+    "128": "src/assets/icons/ChatGPT-128.png"
   },
   "description": "ChatGPT-Toolkit helps you to interact with OpenAI's powerful AI",
   "homepage_url": "https://github.com/smoqadam/web-extension-starter",

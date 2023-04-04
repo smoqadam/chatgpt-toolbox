@@ -12,7 +12,7 @@ export let prompts = [
   {
     "label": "Explain this",
     "id": "explain",
-    "prompt": "Explaing this text: \"{{TEXT}}\""
+    "prompt": "Explain this text: \"{{TEXT}}\""
   },
   {
     "label": "ELI5",
