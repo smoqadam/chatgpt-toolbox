@@ -29,17 +29,20 @@
 #chatgpt-toolbox__header h3 {
   display: flex !important;
   font-size: 20px !important;
-  flex: 4 !important;
   margin: 0 !important;
   color: #fff !important;
+  font-family: sans-serif;
   padding: 0 !important;
+  font-weight: bold;
 }
 
 #chatgpt-toolbox__close {
   cursor: pointer !important;
-  font-size: 20px !important;
+  font-size: 15px !important;
   flex: 1 !important;
   text-align: right !important;
+  font-weight: bold;
+  font-family: sans-serif;
 }
 
 #chatgpt-toolbox__close:hover {
@@ -116,5 +119,5 @@
 }
 
 #chatgpt-toolbox__option-settings {
-  background-image: url('chrome-extension://ndfhmknnnlbdodjelgleieddbpdpcfbo/src/assets/icons/setting.png');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/src/assets/icons/setting.png');
 }
