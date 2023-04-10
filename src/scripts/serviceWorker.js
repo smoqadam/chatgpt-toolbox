@@ -3,7 +3,7 @@ import { prompts } from './prompts';
 chrome.contextMenus.create({
     id: "parent",
     title: "ChatGPT",
-    contexts: ["page","selection"],
+    contexts: ["page", "selection"],
 });
 
 prompts.forEach((p) => {
@@ -13,7 +13,7 @@ prompts.forEach((p) => {
             id: p.id,
             parentId: "parent",
             contexts: ["page"]
-        });    
+        });
         return;
     }
     chrome.contextMenus.create({
@@ -39,19 +39,35 @@ chrome.contextMenus.onClicked.addListener(async function (info, tab) {
         prompt = promptObj.prompt.replace("{{TEXT}}", info.selectionText)
     }
 
-    
+    let result = await chrome.storage.local.get("api_key");
+    // if (result.api_key == undefined) {
+    //     await chrome.tabs.sendMessage(tab.id, { msg: 'missing_api_key', data: { prompt: prompt } });
+    //     return;
+    // }
+
     await chrome.tabs.sendMessage(tab.id, { msg: 'clicked', data: { prompt: prompt } });
 
-    let api_key = await chrome.storage.local.get("api_key");
-    let response = await OpenaiFetchAPI(prompt, api_key.api_key);
+    OpenaiFetchAPI(prompt, result.api_key).then((response) => {
 
-    chrome.tabs.sendMessage(tab.id, {
-        msg: 'response',
-        data: {
-            prompt: prompt,
-            response: response.choices[0].text
-        }
+        console.log({ response });
+        chrome.tabs.sendMessage(tab.id, {
+            msg: 'response',
+            data: {
+                prompt: prompt,
+                response: response.choices[0].text
+            }
+        });
+    }).catch((e) => {
+        console.log({ e });
+        chrome.tabs.sendMessage(tab.id, {
+            msg: 'missing_api_key',
+            data: {
+                prompt: prompt,
+                response: 'Yout API key is missing. Please open the settings and enter your OpenAI\'s API key.'
+            }
+        });
     });
+
 });
 
 

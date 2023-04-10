@@ -22,6 +22,11 @@ chrome.runtime.onMessage.addListener(function (req) {
         popupObj.setPrompt(req.data.prompt);
         popupObj.show();
         popupObj.loading(true);
+    } else if (req.msg == 'missing_api_key') {
+        popupObj.setPrompt(req.data.prompt);
+        popupObj.setResponse('<div style="padding: 5px; background: red; color: white">'+req.data.response+'</div>')
+        popupObj.show();
+        popupObj.loading(false);    
     } else if (req.msg == 'response') {
         console.log(req.data);
         popupObj.setResponse(req.data.response);
