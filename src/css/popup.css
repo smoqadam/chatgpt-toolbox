@@ -21,11 +21,6 @@
   display: flex !important;
 }
 
-#chatgpt-toolbox__header {
-  /* flex: 1; */
-  /* flex-shrink: 1;  */
-
-}
 #chatgpt-toolbox__header-content {
   display: flex !important;
   flex-direction: row;
