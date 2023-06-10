@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "ChatGPT Toolkit",
+  "name": "ChatGPT Toolbox",
   "version": "0.0.1",
   "icons": {
     "16": "src/assets/icons/ChatGPT-16.png",
@@ -8,8 +8,8 @@
     "48": "src/assets/icons/ChatGPT-48.png",
     "128": "src/assets/icons/ChatGPT-128.png"
   },
-  "description": "ChatGPT-Toolkit helps you to interact with OpenAI's powerful AI",
-  "homepage_url": "https://github.com/smoqadam/web-extension-starter",
+  "description": "ChatGPT-Toolbox helps you to interact with OpenAI's powerful AI",
+  "homepage_url": "https://github.com/smoqadam/chatgpt-toolbox",
   "host_permissions": [
     "http://*/*",
     "https://*/*"
