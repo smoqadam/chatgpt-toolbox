@@ -13,6 +13,7 @@ export default class Popup {
     }
     
     hide(){
+        console.log('hide');
         this.el.id = 'chatgpt-toolbox-hidden';
     }
 
@@ -24,7 +25,7 @@ export default class Popup {
     }
 
     registerOptionEvent() {
-        document.querySelector('#chatgpt-toolbox__option-settings').addEventListener('click', (e) => {
+        document.querySelector('#chatgpt-toolbox__settings').addEventListener('click', (e) => {
             console.log('option CLICKED');
             chrome.runtime.sendMessage({type: "openOption"});
         })

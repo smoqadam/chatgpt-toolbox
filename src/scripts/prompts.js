@@ -7,7 +7,7 @@ export let prompts = [
   {
     "label": "Summarize this page",
     "id": "summarize",
-    "prompt": "summerize this: \"{{TEXT}}\". Your repsonse must not have the url and any additional text."
+    "prompt": "explain this article to me in a simple terms: \"{{TEXT}}\""
   },
   {
     "label": "Explain this",

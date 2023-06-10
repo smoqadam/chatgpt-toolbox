@@ -11,8 +11,7 @@
   "description": "ChatGPT-Toolbox helps you to interact with OpenAI's powerful AI",
   "homepage_url": "https://github.com/smoqadam/chatgpt-toolbox",
   "host_permissions": [
-    "http://*/*",
-    "https://*/*"
+    "<all_urls>"
   ],
   "permissions": [
     "activeTab",
@@ -24,33 +23,28 @@
   },
   "author": "Saeed Moghadamzadeh",
   "minimum_chrome_version": "88",
-  "options_page": "src/options.html",
   "options_ui": {
     "page": "src/options.html",
     "open_in_tab": true
   },
   "background": {
-    "service_worker": "src/js/serviceWorker.bundle.js",
-    "type": "module"
+    "scripts": ["src/js/serviceWorker.bundle.js"]
   },
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*"
+        "<all_urls>"
       ],
       "js": [
         "src/js/contentScript.bundle.js"
       ],
-      "css": [
-      ]
+      "css": []
     }
   ],
   "web_accessible_resources": [{
     "resources":["src/css/popup.css", "src/assets/icons/setting.png"],
     "matches": [
-      "http://*/*",
-      "https://*/*"
+      "<all_urls>"
     ]
   }]
 }
