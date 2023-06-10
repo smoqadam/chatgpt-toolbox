@@ -26,7 +26,8 @@ prompts.forEach((p) => {
 
 chrome.runtime.onMessage.addListener((req) => {
     if (req.type == "openOption") {
-        chrome.tabs.create({ 'url': 'chrome-extension://' + chrome.runtime.id + '/src/options.html' });
+        let url = chrome.runtime.getURL('/src/options.html');
+        chrome.tabs.create({ 'url': url });
     }
 });
 
@@ -59,11 +60,13 @@ chrome.contextMenus.onClicked.addListener(async function (info, tab) {
         });
     }).catch((e) => {
         console.log({ e });
+        let url = chrome.runtime.getURL('/src/options.html');
+
         chrome.tabs.sendMessage(tab.id, {
             msg: 'missing_api_key',
             data: {
                 prompt: prompt,
-                response: 'Yout API key is missing. Please open the settings and enter your OpenAI\'s API key.'
+                response: 'Yout API key is missing. Please open the settings and enter your OpenAI\'s API key.',
             }
         });
     });

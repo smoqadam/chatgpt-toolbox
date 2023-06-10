@@ -5,7 +5,7 @@ import Popup from './popup';
 var style = document.createElement('link');
 style.rel = 'stylesheet';
 style.type = 'text/css';
-style.href = chrome.runtime.getURL('src/css/popup.css');
+style.href = chrome.runtime.getURL('/src/css/popup.css');
 (document.head || document.documentElement).appendChild(style);
 
 
@@ -24,7 +24,7 @@ chrome.runtime.onMessage.addListener(function (req) {
         popupObj.loading(true);
     } else if (req.msg == 'missing_api_key') {
         popupObj.setPrompt(req.data.prompt);
-        popupObj.setResponse('<div style="padding: 5px; background: red; color: white">'+req.data.response+'</div>')
+        popupObj.setResponse('<div style="padding: 5px; border:1px solid #ff8686; color: #ff8686;">'+req.data.response+'</div>')
         popupObj.show();
         popupObj.loading(false);    
     } else if (req.msg == 'response') {
