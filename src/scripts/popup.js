@@ -32,16 +32,16 @@ export default class Popup {
     }
 
     setPrompt(prompt) {
-        document.querySelector('#chatgpt-toolbox__prompt-content').textContent = prompt;
+        document.querySelector('#chatgpt-toolbox__box-text-prompt').textContent = prompt;
     }
 
     setResponse(res) {
-        document.querySelector('#chatgpt-toolbox__response-content').innerHTML = res;
+        document.querySelector('#chatgpt-toolbox__box-text-response').innerHTML = res;
     }
 
     loading(b) {
         if (b) {
-            document.querySelector('#chatgpt-toolbox__response-content').textContent = "Please wait...";
+            document.querySelector('#chatgpt-toolbox__box-text-response').textContent = "Please wait...";
         }
     }
 }

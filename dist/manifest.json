@@ -1,7 +1,7 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "ChatGPT Toolbox",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icons": {
     "16": "src/assets/icons/ChatGPT-16.png",
     "32": "src/assets/icons/ChatGPT-32.png",
@@ -10,19 +10,12 @@
   },
   "description": "ChatGPT-Toolbox helps you to interact with OpenAI's powerful AI",
   "homepage_url": "https://github.com/smoqadam/chatgpt-toolbox",
-  "host_permissions": [
-    "<all_urls>"
-  ],
   "permissions": [
     "activeTab",
     "storage",
     "contextMenus"
   ],
-  "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'"
-  },
   "author": "Saeed Moghadamzadeh",
-  "minimum_chrome_version": "88",
   "options_ui": {
     "page": "src/options.html",
     "open_in_tab": true
@@ -41,10 +34,11 @@
       "css": []
     }
   ],
-  "web_accessible_resources": [{
-    "resources":["src/css/popup.css", "src/assets/icons/setting.png"],
-    "matches": [
-      "<all_urls>"
-    ]
-  }]
+  "web_accessible_resources": [
+    "/src/css/popup.css", 
+    "/src/assets/icons/settings.png",
+    "/src/assets/icons/settings-hover.png",
+    "/src/assets/icons/close.png",
+    "/src/assets/icons/close-hover.png"
+  ]
 }

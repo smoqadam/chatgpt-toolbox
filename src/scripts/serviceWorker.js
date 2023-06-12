@@ -1,6 +1,6 @@
 import { prompts } from './prompts';
 
-chrome.contextMenus.create({
+browser.contextMenus.create({
     id: "parent",
     title: "ChatGPT",
     contexts: ["page", "selection"],
@@ -8,7 +8,7 @@ chrome.contextMenus.create({
 
 prompts.forEach((p) => {
     if (p.id === "summarize") {
-        chrome.contextMenus.create({
+        browser.contextMenus.create({
             title: p.label,
             id: p.id,
             parentId: "parent",
@@ -16,7 +16,7 @@ prompts.forEach((p) => {
         });
         return;
     }
-    chrome.contextMenus.create({
+    browser.contextMenus.create({
         title: p.label,
         id: p.id,
         parentId: "parent",
@@ -24,14 +24,14 @@ prompts.forEach((p) => {
     });
 });
 
-chrome.runtime.onMessage.addListener((req) => {
+browser.runtime.onMessage.addListener((req) => {
     if (req.type == "openOption") {
-        let url = chrome.runtime.getURL('/src/options.html');
-        chrome.tabs.create({ 'url': url });
+        let url = browser.runtime.getURL('/src/options.html');
+        browser.tabs.create({ 'url': url });
     }
 });
 
-chrome.contextMenus.onClicked.addListener(async function (info, tab) {
+browser.contextMenus.onClicked.addListener(async function (info, tab) {
     let promptObj = getPrompt(info.menuItemId);
     let prompt = null;
     if (info.menuItemId === "summarize") {
@@ -40,18 +40,18 @@ chrome.contextMenus.onClicked.addListener(async function (info, tab) {
         prompt = promptObj.prompt.replace("{{TEXT}}", info.selectionText)
     }
 
-    let result = await chrome.storage.local.get("api_key");
+    let result = await browser.storage.local.get("api_key");
     // if (result.api_key == undefined) {
-    //     await chrome.tabs.sendMessage(tab.id, { msg: 'missing_api_key', data: { prompt: prompt } });
+    //     await browser.tabs.sendMessage(tab.id, { msg: 'missing_api_key', data: { prompt: prompt } });
     //     return;
     // }
 
-    await chrome.tabs.sendMessage(tab.id, { msg: 'clicked', data: { prompt: prompt } });
+    await browser.tabs.sendMessage(tab.id, { msg: 'clicked', data: { prompt: prompt } });
 
     OpenaiFetchAPI(prompt, result.api_key).then((response) => {
 
         console.log({ response });
-        chrome.tabs.sendMessage(tab.id, {
+        browser.tabs.sendMessage(tab.id, {
             msg: 'response',
             data: {
                 prompt: prompt,
@@ -60,9 +60,9 @@ chrome.contextMenus.onClicked.addListener(async function (info, tab) {
         });
     }).catch((e) => {
         console.log({ e });
-        let url = chrome.runtime.getURL('/src/options.html');
+        let url = browser.runtime.getURL('/src/options.html');
 
-        chrome.tabs.sendMessage(tab.id, {
+        browser.tabs.sendMessage(tab.id, {
             msg: 'missing_api_key',
             data: {
                 prompt: prompt,
