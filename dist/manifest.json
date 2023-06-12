@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "ChatGPT Toolbox",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "icons": {
     "16": "src/assets/icons/ChatGPT-16.png",
     "32": "src/assets/icons/ChatGPT-32.png",
