@@ -2,6 +2,12 @@
 
 ChatGPT - Toolbox is a browser extension that allows users to easily interact with ChatGPT, a powerful language model trained by OpenAI. Users can simply select a piece of text on any webpage, right-click, and choose from a variety of pre-made prompts to engage in fascinating conversations with ChatGPT.
 
+# install
+
+[Chrome](https://chrome.google.com/webstore/detail/chatgpt-toolbox/pfimmkglmfkgbcinlmegcidajpcdnnhe?hl=en-GB&authuser=0)
+
+[Firefox](https://addons.mozilla.org/en-US/firefox/addon/chatgpt-toolbox/)
+
 ### Screenshots
 
 ![image](https://user-images.githubusercontent.com/1223848/230882064-f13cd6bf-1989-40f2-89b9-10da7f9a6fda.png)
