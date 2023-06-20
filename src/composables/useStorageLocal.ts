@@ -9,7 +9,7 @@ import {
   useStorageAsync,
 } from '@vueuse/core'
 
-const storageLocal: StorageLikeAsync = {
+export const storageLocal: StorageLikeAsync = {
   removeItem(key: string) {
     return storage.local.remove(key)
   },

@@ -58,7 +58,13 @@ export async function getManifest() {
             resources: ['dist/contentScripts/style.css'],
             matches: ['<all_urls>'],
           },
-        ]
+        ],
+    browser_action: {
+      "default_icon": {
+        "16": "button/geo-16.png",
+        "32": "button/geo-32.png"
+      },
+    }
   }
 
   if (!isFirefox) {

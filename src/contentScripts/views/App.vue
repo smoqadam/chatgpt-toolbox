@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useToggle } from '@vueuse/core'
+// import browser from "webextension-polyfill";
+ 
 import 'uno.css'
 
 const [show, toggle] = useToggle(false)
@@ -8,6 +10,13 @@ const prompt = ref("");
 const response = ref("");
 
 toggle(false);
+
+
+function openOptionsPage() {
+  browser.runtime.sendMessage({type: "openOption"});
+  // let url = browser.runtime.getURL('/dist/options/index.html');
+  //   browser.tabs.create({ 'url': url });
+}
 
 browser.runtime.onMessage.addListener(function (req) {
     console.log({ req });
@@ -32,7 +41,7 @@ browser.runtime.onMessage.addListener(function (req) {
             <h3>ChatGPT Toolbox</h3>
             <span id="chatgpt-toolbox__settings"
              class="i-material-symbols-settings w-1" title="Settings"
-             
+             @click="openOptionsPage()"
              ></span>
             <span id="chatgpt-toolbox__close" class="i-ic-outline-close w-5"
             @click="toggle()"
