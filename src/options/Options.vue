@@ -111,7 +111,7 @@ function save() {
         </label>
         <input v-model="apiKey"
           class="bg-gray-200 p-2 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="api_key" type="text" placeholder="API Key">
+          id="api_key" type="password" placeholder="API Key">
         <small>OpenAI's Api Key. You can get your API key from <a class="text-blue" href="https://platform.openai.com/account/api-keys" target="_blank">OpenAI's
             dashboard</a></small>
       </div>

@@ -61,8 +61,9 @@ export async function getManifest() {
         ],
     browser_action: {
       "default_icon": {
-        "16": "button/geo-16.png",
-        "32": "button/geo-32.png"
+        16: './assets/icon-16.png',
+        48: './assets/icon-48.png',
+        128: './assets/icon-128.png',
       },
     }
   }

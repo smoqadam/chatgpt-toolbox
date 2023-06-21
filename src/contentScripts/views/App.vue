@@ -5,6 +5,7 @@ import { useToggle } from '@vueuse/core'
 import 'uno.css'
 
 const [show, toggle] = useToggle(false)
+const loading = ref(false);
 // const [prompt, setPrompt] = 
 const prompt = ref("");
 const response = ref("");
@@ -17,11 +18,14 @@ browser.runtime.onMessage.addListener(function (req) {
     console.log({ req });
     if (req.msg == 'clicked') {
         prompt.value = req.data.prompt;
+        loading.value = true;
         toggle(true);
     } else if (req.msg == 'missing_api_key') {
         response.value = '<div style="padding: 5px; border:1px solid #ff8686; color: #ff8686;">'+req.data.response+'</div>';
+        loading.value = false;
     } else if (req.msg == 'response') {
         response.value = req.data.response;
+        loading.value = false;
     }
 });
 
@@ -59,7 +63,11 @@ browser.runtime.onMessage.addListener(function (req) {
               ChatGPT
             </div>
             <div id="chatgpt-toolbox__box-text-response">
-              <span v-html="response"></span>
+              <div v-show="loading" class="content-center">
+                <span  class="i-line-md-loading-twotone-loop w-5 h-5 inline-block">Loading</span>
+              </div>
+              <span v-html="response">
+              </span>
             </div>
           </div>
         </div>
