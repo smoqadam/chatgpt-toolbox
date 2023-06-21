@@ -97,11 +97,11 @@ function save() {
 </script>
 
 <template>
-  <main class="flex  p-10 justify-center">
-    <div class="w-3/4  h-12">
+  <main class="flex  p-10 justify-center ">
+    <div class="w-3/4  border p-5">
       <div class="flex text-left  border-b-1 mb-3">
         <h1 class="w-8/9 py-4  text-3xl font-black">ChatGPT-Toolbox Options {{ saved }}</h1>
-        <div class="w-1/9 text-center content-center">
+        <div class="w-1/9 text-center content-center py-5">
           <button @click="save" class="btn">Save</button>
         </div>
       </div>
@@ -112,13 +112,14 @@ function save() {
         <input v-model="apiKey"
           class="bg-gray-200 p-2 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           id="api_key" type="password" placeholder="API Key">
-        <small>OpenAI's Api Key. You can get your API key from <a class="text-blue" href="https://platform.openai.com/account/api-keys" target="_blank">OpenAI's
+        <small>OpenAI's Api Key. You can get your API key from <a class="text-blue"
+            href="https://platform.openai.com/account/api-keys" target="_blank">OpenAI's
             dashboard</a></small>
       </div>
 
-
-      <div class="block border-gray-400 border">
-        <div class="flex text-xl bg-amber  p-2">
+      <!-- -->
+      <div class="block border border-gray-400">
+        <div class="flex text-xl   bg-amber  p-2">
           <div class="w-4/5 font-extrabold  text-left">
             Prompts
           </div>
@@ -191,8 +192,20 @@ function save() {
             </table>
           </div>
         </div>
-        
+
       </div>
+
+      <footer class="flex  p-10-- content-center ">
+
+<div class="w-4/4 text-center bg-gray-900 text-white content-center p-4 pt-3 h-12">
+
+  ChatGPT - Toolbox is free and open-source. Send your feedbacks at
+  <a class="text-amber"
+    href="https://github.com/smoqadam/chatgpt-toolbox">https://github.com/smoqadam/chatgpt-toolbox</a>
+
+</div>
+</footer>
     </div>
   </main>
+
 </template>

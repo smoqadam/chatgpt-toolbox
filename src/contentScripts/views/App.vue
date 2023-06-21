@@ -52,7 +52,7 @@ browser.runtime.onMessage.addListener(function (req) {
             <div id="chatgpt-toolbox__title">
               Prompt
             </div>
-            <div id="chatgpt-toolbox__box-text-prompt">
+            <div id="chatgpt-toolbox__box-text-prompt" class="h-65 overflow-y-auto">
               {{ prompt }}
             </div>
           </div>
@@ -62,7 +62,7 @@ browser.runtime.onMessage.addListener(function (req) {
             <div id="chatgpt-toolbox__title">
               ChatGPT
             </div>
-            <div id="chatgpt-toolbox__box-text-response">
+            <div id="chatgpt-toolbox__box-text-response" class="h-65 overflow-y-auto">
               <div v-show="loading" class="content-center">
                 <span  class="i-line-md-loading-twotone-loop w-5 h-5 inline-block">Loading</span>
               </div>
