@@ -8,8 +8,12 @@ ChatGPT - Toolbox is a browser extension that allows users to easily interact wi
 
 [Firefox](https://addons.mozilla.org/en-US/firefox/addon/chatgpt-toolbox/)
 
-### Screenshots
+# Screenshots
 
-![image](https://user-images.githubusercontent.com/1223848/230882064-f13cd6bf-1989-40f2-89b9-10da7f9a6fda.png)
+Select a piece of text on the webpage and you can see your prompts on right-click menu -> ChatGPT Toolbox 
 
-![image](https://user-images.githubusercontent.com/1223848/230882428-b2444718-2345-41a8-b504-2eb8a4dc9de1.png)
+<img src="https://user-images.githubusercontent.com/1223848/230882428-b2444718-2345-41a8-b504-2eb8a4dc9de1.png" width="500" />
+
+
+### Add custom prompts on the option's page
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/1223848/247523415-9ae56733-2e7f-456d-994e-05200fcbabdf.png" width="500" />
