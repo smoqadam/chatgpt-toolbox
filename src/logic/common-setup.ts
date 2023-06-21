@@ -89,3 +89,6 @@ export async function OpenaiFetchAPI(prompt: string, token: string) {
 }
 
 
+export function sendMessage(tab: any, msg: Message): void {
+  browser.tabs.sendMessage(tab.id, msg);
+}

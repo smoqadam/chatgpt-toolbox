@@ -9,13 +9,8 @@ const [show, toggle] = useToggle(false)
 const prompt = ref("");
 const response = ref("");
 
-toggle(false);
-
-
 function openOptionsPage() {
   browser.runtime.sendMessage({type: "openOption"});
-  // let url = browser.runtime.getURL('/dist/options/index.html');
-  //   browser.tabs.create({ 'url': url });
 }
 
 browser.runtime.onMessage.addListener(function (req) {
@@ -40,7 +35,7 @@ browser.runtime.onMessage.addListener(function (req) {
            class="bg-dark">
             <h3>ChatGPT Toolbox</h3>
             <span id="chatgpt-toolbox__settings"
-             class="i-material-symbols-settings w-1" title="Settings"
+             class="i-material-symbols-settings" title="Settings"
              @click="openOptionsPage()"
              ></span>
             <span id="chatgpt-toolbox__close" class="i-ic-outline-close w-5"
@@ -50,7 +45,9 @@ browser.runtime.onMessage.addListener(function (req) {
         </div>
         <div id="chatgpt-toolbox__box">
           <div id="chatgpt-toolbox__box-content">
-            <div id="chatgpt-toolbox__title">Prompt</div>
+            <div id="chatgpt-toolbox__title">
+              Prompt
+            </div>
             <div id="chatgpt-toolbox__box-text-prompt">
               {{ prompt }}
             </div>
@@ -58,7 +55,9 @@ browser.runtime.onMessage.addListener(function (req) {
         </div>
         <div id="chatgpt-toolbox__box chatgpt-toolbox__box-response">
           <div id="chatgpt-toolbox__box-content">
-            <div id="chatgpt-toolbox__title">ChatGPT</div>
+            <div id="chatgpt-toolbox__title">
+              ChatGPT
+            </div>
             <div id="chatgpt-toolbox__box-text-response">
               <span v-html="response"></span>
             </div>

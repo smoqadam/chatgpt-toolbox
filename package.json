@@ -1,10 +1,10 @@
 {
-  "name": "vitesse-webext",
-  "displayName": "Vitesse WebExt",
-  "version": "0.0.1",
+  "name": "chatgpt-toolbox",
+  "displayName": "ChatGPT-Toolbox",
+  "version": "0.0.4",
   "private": true,
   "packageManager": "pnpm@8.3.1",
-  "description": "[description]",
+  "description": "ChatGPT-Toolbox helps you to interact with OpenAI's powerful AI",
   "scripts": {
     "dev": "npm run clear && cross-env NODE_ENV=development run-p dev:*",
     "dev-firefox": "npm run clear && cross-env NODE_ENV=development EXTENSION=firefox run-p dev:*",

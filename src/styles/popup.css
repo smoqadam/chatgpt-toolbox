@@ -51,10 +51,8 @@
 
   flex: 1 !important; 
   padding: 5px !important;
-  background-size: 25px !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  background-image: url('/src/assets/icons/close.png') !important;
+  
+  margin: 0 6px !important;
 }
 
 #chatgpt-toolbox__close:hover {  
@@ -68,8 +66,8 @@
   flex: 1 !important;
   display: flex !important;
   align-items: center;
-  width: 25px !important;
-  height: 25px !important;
+  width: 20px !important;
+  height: 20px !important;
   background-image: url('/src/assets/icons/settings.png') !important;
   text-align: right !important;
   font-weight: bold !important;
@@ -77,7 +75,7 @@
   background-size: 18px !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
-
+  max-width: 15px !important;
 }
 
 

@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
 import type { Manifest } from 'webextension-polyfill'
 import type PkgType from '../package.json'
-import { isDev, isFirefox, port, r } from '../scripts/utils'
+import { isDev, isFirefox, r } from '../scripts/utils'
 
 export async function getManifest() {
   const pkg = await fs.readJSON(r('package.json')) as typeof PkgType
@@ -27,9 +27,9 @@ export async function getManifest() {
         service_worker: './dist/background/index.mjs',
       },
     icons: {
-      16: './assets/icon-512.png',
-      48: './assets/icon-512.png',
-      128: './assets/icon-512.png',
+      16: './assets/icon-16.png',
+      48: './assets/icon-48.png',
+      128: './assets/icon-128.png',
     },
     permissions: [
       'tabs',

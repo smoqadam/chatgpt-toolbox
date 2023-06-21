@@ -99,9 +99,9 @@ function save() {
 <template>
   <main class="flex  p-10 justify-center">
     <div class="w-3/4  h-12">
-      <div class="flex text-left">
-        <h1 class="w-8/9 p-4 text-2xl font-black">Options {{ saved }}</h1>
-        <div class="w-1/9 text-center ">
+      <div class="flex text-left  border-b-1 mb-3">
+        <h1 class="w-8/9 py-4  text-3xl font-black">ChatGPT-Toolbox Options {{ saved }}</h1>
+        <div class="w-1/9 text-center content-center">
           <button @click="save" class="btn">Save</button>
         </div>
       </div>
@@ -112,7 +112,8 @@ function save() {
         <input v-model="apiKey"
           class="bg-gray-200 p-2 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           id="api_key" type="text" placeholder="API Key">
-        <small>OpenAI's Api Key</small>
+        <small>OpenAI's Api Key. You can get your API key from <a class="text-blue" href="https://platform.openai.com/account/api-keys" target="_blank">OpenAI's
+            dashboard</a></small>
       </div>
 
 
@@ -168,18 +169,20 @@ function save() {
           <div class="w-6/9 p-3">
             <table class="table-auto w-full">
               <thead>
-                <tr>
-                  <th class=" w-1/9 border-- px-4 py-2">ID</th>
-                  <th class=" w-2/9 border-- px-4 py-2">Label</th>
-                  <th class=" w-5/9 border-- px-4 py-2">Prompts</th>
-                  <th class=" w-1/9 border-- px-4 py-2">Remove</th>
+                <tr class="bg-gray-100">
+                  <th class=" w-1/9 border px-4 py-2">ID</th>
+                  <th class=" w-2/9 border px-4 py-2">Label</th>
+                  <th class=" w-5/9 border px-4 py-2">Prompts</th>
+                  <th class=" w-1/9 border px-4 py-2">Remove</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="p in prompts">
                   <td class="border px-4 py-2">{{ p.id }}</td>
                   <td class="border px-4 py-2">{{ p.label }}</td>
-                  <td class="border px-4 py-2">{{ p.prompt }}</td>
+                  <td class="border px-4 py-2 ">
+                    <div class="text-clip">{{ p.prompt }}</div>
+                  </td>
                   <td class="border px-4 py-2 text-center">
                     <button href="#" class="i-material-symbols-delete-outline text-red" @click="remove(p)">X</button>
                   </td>
